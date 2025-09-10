@@ -1,0 +1,16 @@
+pip install torch torchvision opencv-python matplotlib
+git clone https://github.com/ultralytics/yolov5
+cd yolov5
+pip install -r requirements.txt
+
+lag_figurer_med_annotering.py filen lager både bilder og annoterer de automatisk, så slipper man å manuelt annotere hvert eneste bilde
+
+80% av disse bildene skal brukes til å trene, og 20% skal brukes som validering. 
+
+YOLO trenger en konfigurasjonsfil som forteller hvor bildene og klassene er. Lag en fil som heter data.yaml
+
+python train.py --img 640 --batch 16 --epochs 50 --data data.yaml --weights yolov5s.pt
+
+Test_modell.py inneholder kode som tester et bilde mot modellen. 
+Koden returnerer bilde med boundingboxer, klasse og sikkerhetsgrad. 
+Altså hvor figuren befinner seg, hva slags figur det er og hvor sikker modellen er på at den har riktig.
